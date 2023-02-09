@@ -28,14 +28,17 @@ const Login = () => {
             window.location.reload();
             setError("");
         } catch (err) {
-            setError("Oops, incorrect credentials.");
+            setError("Oops, wrong username/password.");
         }
     };
 
     return (
         <div className="wrapper">
             <div className="form">
-                <h1 className="title">Chat Application</h1>
+                <h1 className="title">
+                    <i> Welcome to </i>
+                    <b>Chaterly</b>
+                </h1>
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"

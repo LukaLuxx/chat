@@ -2,7 +2,6 @@ import React from "react";
 import MessageForm from "./MsgForm";
 import MyMessage from "./MyMsg";
 import TheirMessage from "./TheirMsg";
-import LogOut from "./LogOut";
 
 const ChatFeed = (props) => {
     const { chats, activeChat, userName, messages } = props;
@@ -12,15 +11,13 @@ const ChatFeed = (props) => {
     const renderReadReceipts = (message, isMyMessage) =>
         chat.people.map(
             (person, index) =>
-                person.last_read === message.id && (
+                person.last_read && (
                     <div
                         key={`read_${index}`}
                         className="read-receipt"
                         style={{
                             float: isMyMessage ? "right" : "left",
-                            backgroundImage:
-                                person.person.avatar &&
-                                `url(${person.person.avatar})`,
+                            backgroundImage: `url(${person.person.avatar})`,
                         }}
                     />
                 )
@@ -33,7 +30,6 @@ const ChatFeed = (props) => {
             const message = messages[key];
             const lastMessageKey = index === 0 ? null : keys[index];
             const isMyMessage = userName === message.sender.username;
-
             return (
                 <div key={`msg_${index}`} style={{ width: "100%" }}>
                     <div className="message-block">
@@ -50,7 +46,7 @@ const ChatFeed = (props) => {
                         className="read-receipts"
                         style={{
                             marginRight: isMyMessage ? "18px" : "0px",
-                            marginLeft: isMyMessage ? "0px" : "68px",
+                            marginLeft: isMyMessage ? "0px" : "2px",
                         }}>
                         {renderReadReceipts(message, isMyMessage)}
                     </div>

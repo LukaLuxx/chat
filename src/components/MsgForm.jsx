@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { SendOutlined, PictureOutlined } from "@ant-design/icons";
-import { sendMessage, isTyping } from "react-chat-engine";
-import Login from "./Login";
+import {
+    sendMessage,
+    isTyping,
+    getMessages,
+    ChatEngineContext,
+} from "react-chat-engine";
 
 function MessageForm(props) {
     const [value, setValue] = useState("");
     const { chatId, creds } = props;
+
+    const myContext = useContext(ChatEngineContext);
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -20,7 +26,11 @@ function MessageForm(props) {
         const text = value.trim();
 
         if (text.length > 0) {
-            sendMessage(creds, chatId, { text });
+            sendMessage(creds, chatId, { text }, () => {
+                getMessages(props, chatId, (_chatId, messages) => {
+                    myContext.setMessages(messages);
+                });
+            });
         }
 
         setValue("");
@@ -38,34 +48,51 @@ function MessageForm(props) {
         window.location.reload();
     };
 
-    const LogoutButton = () => <button onClick={handleLogout}>Logout</button>;
+    const LogoutButton = () => (
+        <button
+            onClick={handleLogout}
+            style={{
+                background: "red",
+                color: "white",
+                height: "30px",
+                cursor: "pointer",
+                hover: "darkred",
+                padding: "0",
+            }}>
+            Logout
+        </button>
+    );
 
     return (
-        <form className="message-form" onSubmit={handleSubmit}>
-            <input
-                className="message-input"
-                placeholder="Send a message..."
-                value={value}
-                onChange={handleChange}
-                onSubmit={handleSubmit}
-            />
-            <label htmlFor="upload-button">
-                <span className="image-button">
-                    <PictureOutlined className="picture-icon" />
-                </span>
-            </label>
-            <input
-                type="file"
-                multiple={false}
-                id="upload-button"
-                style={{ display: "none" }}
-                onChange={handleUpload.bind(this)}
-            />
-            <button type="submit" className="send-button">
-                <SendOutlined className="send-icon" />
-            </button>
+        <div>
             {LogoutButton()}
-        </form>
+            <div>
+                <form className="message-form" onSubmit={handleSubmit}>
+                    <input
+                        className="message-input"
+                        placeholder="Type in your message..."
+                        value={value}
+                        onChange={handleChange}
+                        onSubmit={handleSubmit}
+                    />
+                    <label htmlFor="upload-button">
+                        <span className="image-button">
+                            <PictureOutlined className="picture-icon" />
+                        </span>
+                    </label>
+                    <input
+                        type="file"
+                        multiple={false}
+                        id="upload-button"
+                        style={{ display: "none" }}
+                        onChange={handleUpload.bind(this)}
+                    />
+                    <button type="submit" className="send-button">
+                        <SendOutlined className="send-icon" />
+                    </button>
+                </form>
+            </div>
+        </div>
     );
 }
 

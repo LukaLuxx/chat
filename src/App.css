@@ -6,74 +6,94 @@
 }
 
 .ce-chat-list {
-    background-color: rgb(240, 240, 240) !important;
+    background: darkgray !important;
 }
 
 .ce-chats-container {
-    background-color: rgb(240, 240, 240) !important;
+    background: rgb(131, 202, 208);
+    background: linear-gradient(
+        90deg,
+        rgba(131, 202, 208, 1) 24%,
+        rgba(56, 121, 120, 1) 98%,
+        rgba(199, 211, 210, 1) 100%
+    );
+    text-decoration: underline;
+    font-size: large;
+    border-radius: 0% !important;
 }
 
 .ce-active-chat-card {
-    background-color: #cabcdc !important;
-    border: 4px solid #cabcdc !important;
-    border-radius: 0px !important;
+    background-color: #6820c6;
+    border: 4px solid #433d4b;
+    border-radius: 0px;
 }
 
 .ce-chat-subtitle-text {
-    color: #595959 !important;
+    color: #595959;
 }
 
 .ce-chat-form-container {
-    padding-bottom: 20px !important;
+    padding-bottom: 20px;
+    background: rgb(131, 202, 208);
+    background: linear-gradient(
+        90deg,
+        rgba(131, 202, 208, 1) 24%,
+        rgba(56, 121, 120, 1) 98%,
+        rgba(199, 211, 210, 1) 100%
+    );
 }
 
 .ce-text-input {
-    border-radius: 6px !important;
-    border: 1px solid #3b2a50 !important;
+    border-radius: 6px;
+    border: 1px solid #3b2a50;
 }
 
 .ce-primary-button {
-    border-radius: 6px !important;
-    background-color: #7554a0 !important;
+    border-radius: 6px;
+    background-color: #350771;
     position: relative;
     bottom: 1px;
 }
 
 .ce-danger-button {
-    background-color: white !important;
-    border-radius: 22px !important;
+    background-color: white;
+    border-radius: 22px;
 }
 
 .ce-settings {
-    background-color: rgb(240, 240, 240) !important;
+    background: rgb(199, 211, 210);
+    background: linear-gradient(
+        90deg,
+        rgba(199, 211, 210, 1) 1%,
+        rgba(56, 121, 120, 1) 3%,
+        rgba(131, 202, 208, 1) 100%
+    );
 }
 
 .ce-autocomplete-input {
-    border-radius: 6px !important;
-    border: 1px solid #3b2a50 !important;
+    border-radius: 6px;
+    border: 1px solid #3b2a50;
 }
 
 .ce-autocomplete-options {
-    border-radius: 6px !important;
-    border: 1px solid #3b2a50 !important;
-    background-color: white !important;
+    border-radius: 6px;
+    border: 1px solid #3b2a50;
+    background-color: white;
 }
 
 .ce-chat-settings-container {
-    padding-top: 12px !important;
+    padding-top: 12px;
 }
 
 .ce-chat-avatars-row {
-    display: none !important;
+    display: block;
 }
-
-/* CUSTOM FEED */
 
 .chat-feed {
     height: 100%;
     width: 100%;
     overflow: scroll;
-    background-color: rgb(240, 240, 240);
+    background-color: #a9a9a9;
 }
 
 .chat-title-container {
@@ -83,13 +103,13 @@
 }
 
 .chat-title {
-    color: #7554a0;
+    color: #420808;
     font-weight: 800;
     font-size: 24px;
 }
 
 .chat-subtitle {
-    color: #7554a0;
+    color: #5a0916;
     font-weight: 600;
     font-size: 12px;
     padding-top: 4px;
@@ -99,12 +119,13 @@
     float: left;
     width: 100%;
     display: flex;
-    margin-left: 18px;
+    margin-left: 5px;
 }
 
 .message-block {
     width: 100%;
     display: inline-block;
+    background-image: inherit;
 }
 
 .message-avatar {
@@ -130,7 +151,7 @@
     object-fit: cover;
     border-radius: 6px;
     height: 30vw;
-    /* width: 30vw; */
+    width: 30vw;
     max-height: 200px;
     max-width: 200px;
     min-height: 100px;
@@ -138,26 +159,27 @@
 }
 
 .read-receipts {
-    position: relative;
-    bottom: 6px;
+    bottom: 2px;
 }
 
 .read-receipt {
-    width: 13px;
-    height: 13px;
-    border-radius: 13px;
+    bottom: 2px;
+    width: 7px;
+    height: 7px;
+    border-radius: 30px;
     margin: 1.5px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 14px;
+    background-size: 30px;
 }
 
 .message-form-container {
     position: absolute;
     bottom: 0px;
-    width: calc(100% - 36px);
-    padding: 18px;
-    background-color: rgb(240, 240, 240);
+    width: 100%;
+    padding: 5px;
+    background-color: darkgray;
+    background: transparent;
 }
 
 .message-form {
@@ -181,6 +203,7 @@
     cursor: pointer;
     padding: 0px 12px;
     height: 100%;
+    visibility: hidden;
 }
 
 .send-button {
@@ -203,7 +226,6 @@
     font-size: 14px;
 }
 
-/* FORM STYLES */
 *,
 *::after,
 *::before {
@@ -216,28 +238,22 @@
 .wrapper {
     height: 100vh;
     width: 100%;
-    background: rgb(117, 84, 160);
+    background: rgb(146, 69, 218);
     background: linear-gradient(
         90deg,
-        rgba(117, 84, 160, 1) 7%,
-        rgba(117, 84, 160, 1) 17%,
-        rgba(106, 95, 168, 1) 29%,
-        rgba(99, 103, 174, 1) 44%,
-        rgba(87, 116, 184, 1) 66%,
-        rgba(70, 135, 198, 1) 83%,
-        rgba(44, 163, 219, 1) 96%,
-        rgba(22, 188, 237, 1) 100%,
-        rgba(0, 212, 255, 1) 100%
+        rgba(146, 69, 218, 1) 2%,
+        rgba(141, 55, 220, 1) 52%,
+        rgba(74, 227, 240, 1) 98%
     );
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* background-image: url(Bckgrnd/Sheep.jpg); */
+    object-fit: cover;
+    background-position: center;
 }
 
 .input {
     color: #333;
     font-size: 1.2rem;
-    margin: 0 auto;
+    margin: auto;
     padding: 1.5rem 2rem;
     border-radius: 0.2rem;
     background-color: rgb(255, 255, 255);
@@ -247,11 +263,13 @@
     border-bottom: 0.3rem solid transparent;
     transition: all 0.3s;
     outline: none;
+    margin-top: 25px;
     margin-bottom: 25px;
 }
 
 .form {
     width: 400px;
+    margin: auto;
 }
 
 .title {
