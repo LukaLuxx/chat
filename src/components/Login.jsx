@@ -17,10 +17,14 @@ const Login = () => {
             "User-Secret": password,
         };
 
+        //Nakon definiranja objekta authObject u funkciji handleSubmit se poziva asinkrona funkcija axios.get, koja koristi Axios biblioteku za slanje HTTP GET zahtjeva na URL https://api.chatengine.io/chats. Ovaj URL koristi Chat Engine API kako bi se dohvatili popis razgovora za autentificiranog korisnika.
+
         try {
             await axios.get("https://api.chatengine.io/chats", {
                 headers: authObject,
             });
+
+            //Kako bi se ovaj zahtjev autentificirao, potrebno je poslati zaglavlje (headers) koje sadrži ID projekta, korisničko ime i lozinku.
 
             localStorage.setItem("username", username);
             localStorage.setItem("password", password);
@@ -29,6 +33,8 @@ const Login = () => {
             setError("");
         } catch (err) {
             setError("Oops, wrong username/password.");
+
+            //Ako se uspješno dohvate podaci o razgovorima, u localStorage se sprema korisničko ime i lozinka kako bi se korisnik mogao automatski prijaviti pri sljedećoj posjeti aplikaciji. Zatim se poziva funkcija window.location.reload() kako bi se ponovno učitala aplikacija.
         }
     };
 

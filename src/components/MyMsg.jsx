@@ -1,7 +1,8 @@
 import React from "react";
 
 function MyMessage({ message }) {
-    if (message?.attachments?.lenght > 0) {
+    if (message?.attachments?.length > 0) {
+        //Optional chaining da ne dobijem error u runtimeu nego undefined
         return (
             <img
                 src={message.attachments[0].file}

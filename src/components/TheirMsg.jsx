@@ -2,7 +2,7 @@ import React from "react";
 
 function TheirMessage({ lastMessage, message }) {
     const isFirstMsgUser =
-        !lastMessage || lastMessage.sender.username === message.sender.username;
+        !lastMessage || lastMessage.sender.username === message.sender.username; //Boolean koji provjerava da li postoji 'lastMessage' i da li ju je poslao drugi korisnik od trenutnog 'message', ako je 'lastMessage' null znači da je trenutni 'message' prvi
 
     return (
         <div className="message-row">
